@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1624197401 source:c:\unzipped\bookmanager\bookmanager\main.cpp
+	<iostream>
+	<BookController.h>
+
+1624203909 c:\unzipped\bookmanager\bookmanager\include\book.h
+	<string>
+
+1624195020 source:c:\unzipped\bookmanager\bookmanager\src\book.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	<Book.h>
+
+1623853142 source:c:\unzipped\bookmanager\bookmanager\src\mytest.cpp
+	"Mytest.h"
+
+1623853569 c:\unzipped\bookmanager\bookmanager\include\mytest.h
+	<string>
+
+1624203365 source:c:\unzipped\bookmanager\bookmanager\src\bookwork.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cstring>
+	<iomanip>
+	<BookWork.h>
+	<book.h>
+
+1624196114 c:\unzipped\bookmanager\bookmanager\include\bookwork.h
+	<string>
+	<Book.h>
+
+1624203573 source:c:\unzipped\bookmanager\bookmanager\src\bookcontroller.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	<BookWork.h>
+
+1624126223 c:\unzipped\bookmanager\bookmanager\include\bookcontroller.h
+

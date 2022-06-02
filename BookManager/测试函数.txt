@@ -1,0 +1,165 @@
+void test1()  //初始化文件，生成测试数据（OK)
+{
+    BookWork bw;      //生成业务对象
+    bw.initialBook(); //调用业务方法，实现业务
+}
+
+void test2()  //显示所有图书（OK)
+{
+    BookWork bw; //生成业务对象
+    bw.queryAllBook(); //调用业务方法，实现业务
+}
+
+void test3()  //查找图书（OK）
+{
+    string findStr = "";
+
+    cout<<"请输入查找的图书信息:"<<endl;
+    cin>>findStr;
+
+    BookWork bw;  //生成业务对象
+    bw.queryBookByString(findStr); //调用业务方法，实现业务
+}
+
+void test4()  //插入图书
+{
+    //1:定义字符串
+    string titleStr[5]={"图书编号：","图书名称：","图书作者：","图书价格：","出版社名："}; //字段信息
+    string valueStr[5]={"","","","",""}; //字段值
+    char mBookid[50],mBookname[50],mAuthor[50],mPublish[50]; //字段变量
+    double mPrice;
+
+    //2:输入字段值
+    for(int i=0;i<5;i++)
+    {
+        cout<<titleStr[i];
+        cin>>setw(50)>>valueStr[i];
+    }
+
+    //3:处理字段值，将输入值保存到字段变量
+    strcpy(mBookid,valueStr[0].c_str());  //string要转char*
+    strcpy(mBookname,valueStr[1].c_str());
+    strcpy(mAuthor,valueStr[2].c_str());
+    strcpy(mPublish,valueStr[4].c_str());
+    mPrice = atof(valueStr[3].c_str());   //string转double
+
+    //3:创建并实例化对象
+    Book book(mBookid,mBookname,mAuthor,mPrice,mPublish); //实例化对象
+
+    //4:生成业务对象，并调用业务方法
+    BookWork bw;
+    bool insertFlag = bw.insertBook(book);
+    if (insertFlag==true)
+        cout<<"插入图书成功!"<<endl;
+    else
+        cout<<"插入图书失败!"<<endl;
+
+}
+
+void test5()  //修改图书
+{
+    //1:输入要修改的图书编号
+    string findBookid = "";
+    cout<<"请输入要修改的图书编号：";
+    cin>>findBookid;
+
+    //2:定位图书
+    BookWork bw;  //生成业务对象
+    int bookPos  = bw.tellBookPosition(findBookid); //调用业务方法，实现业务
+    cout<<bookPos<<endl;
+
+    //3:修改记录
+    if(bookPos>=0)
+    {
+        //找到记录
+        //3.1:输入图书信息
+        char mBookid[50],mBookname[50],mAuthor[50],mPublish[50]; //字段变量
+        double mPrice;
+        cout<<"输入新的图书信息"<<endl;
+        cout<<"图书编号：";
+        cin>>setw(50)>>mBookid;
+        cout<<"图书名称：";
+        cin>>setw(50)>>mBookname;
+        cout<<"图书作者：";
+        cin>>setw(50)>>mAuthor;
+        cout<<"图书价格：";
+        cin>>setw(50)>>mPrice;
+        cout<<"出版社名：";
+        cin>>setw(50)>>mPublish;
+
+        //3.2:创建并实例化对象
+        Book book(mBookid,mBookname,mAuthor,mPrice,mPublish); //实例化对象
+
+        //3.3:调用业务方法，实现修改
+        bool updateFlag = bw.updateBook(book,bookPos);
+        if(updateFlag==true)
+        {
+            cout<<"图书修改成功！";
+        }
+        else
+        {
+            cout<<"图书修改失败!";
+        }
+    }
+    else
+    {
+        //没找到记录
+        cout<<"图书不存在，修改失败！"<<endl;
+    }
+}
+
+void test6()  //删除图书
+{
+    //1:输入要删除的图书编号
+    string findBookid = "";
+    cout<<"请输入要删除的图书编号：";
+    cin>>findBookid;
+
+    //2:定位图书
+    BookWork bw;  //生成业务对象
+    int bookPos  = bw.tellBookPosition(findBookid); //调用业务方法，实现业务
+    cout<<bookPos<<endl;
+
+    //3:删除图书
+    if(bookPos>=0)
+    {
+        //找到记录
+        bool deleteFlag = bw.deleteBook(bookPos); //调用业务方法，实现业务
+        if(deleteFlag==true)
+        {
+            cout<<"图书删除成功！"<<endl;
+        }
+        else
+        {
+            cout<<"图书删除失败！"<<endl;
+        }
+    }
+    else
+    {
+        //没找到记录
+        cout<<"图书不存在，删除失败！"<<endl;
+    }
+}
+
+
+
+int main()
+{
+    //初始化文件
+    //test1();
+
+    //显示所有图书
+    //test2();
+
+    //查找图书
+    //test3();
+
+    //插入图书
+    //test4();
+
+    //修改图书
+    //test5();
+
+    //删除图书
+    //test6();
+}
